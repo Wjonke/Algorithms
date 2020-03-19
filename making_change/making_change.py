@@ -3,7 +3,13 @@
 import sys
 
 def making_change(amount, denominations):
-  pass 
+  my_cache = {i: 0 for i in range(amount + 1)}
+  my_cache[0] = 1
+  for x in denominations:
+    for y in range(1, amount + 1):
+      if y - x >= 0:
+        my_cache[y] = my_cache[y - x] + my_cache[y]
+  return my_cache[amount]
 
 
 if __name__ == "__main__":
