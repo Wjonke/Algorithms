@@ -3,7 +3,20 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  minimum = None
+  try:
+    for k, v in enumerate(recipe):
+      if ingredients[v] // recipe[v] == 0:
+        return 0
+      elif k == 0:
+        minimum = ingredients[v] // recipe[v]
+      else:
+        if minimum > ingredients[v] // recipe[v]:
+          minimum = ingredients[v] // recipe[v]
+  except KeyError:
+    return 0
+
+  return minimum
 
 
 if __name__ == '__main__':
